@@ -217,10 +217,6 @@ public:
 
 };
 
-
-
-
-
 int main() {
     int P,R;
     cout << "Enter number of processes: ";
@@ -240,34 +236,33 @@ int main() {
         int choice;
         cin >> choice;
 
-        if(choice==1)
+        switch(choice) 
         {
-            b.ShowState();
-        } 
-        else if(choice==2)
-        {
-            b.isSafe();
-        } 
-        else if(choice==3)
-        {
-            int p;
-            cout << "Enter process number: ";
-            cin >> p;
-            vector<int> request(R);
-            cout << "Enter request vector: ";
-            for(int j=0;j<R;j++)
-                cin >> request[j];
-            b.requestResources(p, request);
-        } 
-        else if(choice==4)
-        {
-            cout << "Exiting...\n";
-            break;
-        } 
-        else 
-        {
-            cout << "Invalid choice.\n";
+            case 1:
+                b.ShowState();
+                break;
+            case 2:
+                b.isSafe();
+                break;
+            case 3: 
+            {
+                int p;
+                cout << "Enter process number: ";
+                cin >> p;
+                vector<int> request(R);
+                cout << "Enter request vector: ";
+                for(int j = 0; j < R; j++)
+                    cin >> request[j];
+                b.requestResources(p, request);
+                break;
+            }
+            case 4:
+                cout << "Exiting...\n";
+                break;
+            default:
+                cout << "Invalid choice.\n";
         }
+
     }
 
     return 0;
